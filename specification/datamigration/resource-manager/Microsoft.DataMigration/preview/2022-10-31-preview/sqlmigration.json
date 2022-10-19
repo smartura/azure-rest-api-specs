@@ -1671,6 +1671,23 @@
         }
       }
     },
+    "DatabaseMigrationSqlMiListResult": {
+      "description": "A list of Database Migrations for SQL Managed Instance.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatabaseMigrationSqlMi"
+          },
+          "readOnly": true
+        },
+        "nextLink": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
     "DatabaseMigrationPropertiesSqlVm": {
       "x-ms-discriminator-value": "SqlVm",
       "allOf": [
@@ -1701,6 +1718,23 @@
         "offlineConfiguration": {
           "$ref": "#/definitions/OfflineConfiguration",
           "description": "Offline configuration."
+        }
+      }
+    },
+    "DatabaseMigrationSqlVmListResult": {
+      "description": "A list of Database Migrations for SQL Virtual Machine.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatabaseMigrationSqlVm"
+          },
+          "readOnly": true
+        },
+        "nextLink": {
+          "type": "string",
+          "readOnly": true
         }
       }
     },
@@ -2586,6 +2620,17 @@
           "items": {
             "$ref": "#/definitions/TestConnectivityData"
           }
+        }
+      }
+    },
+    "TestConnectivityData": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
         }
       }
     }
