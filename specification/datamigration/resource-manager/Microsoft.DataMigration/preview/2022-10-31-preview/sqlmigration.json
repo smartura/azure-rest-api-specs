@@ -2538,6 +2538,56 @@
           "readOnly": true
         }
       }
+    },
+    "validateIR": {
+      "description": "IR validations for MI / VM",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "description": "Resource Type",
+          "enum": [
+            "SqlMi",
+            "SqlVm",
+            "SqlDb"
+          ],
+          "type": "string",
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
+        },
+        "sourceDatabaseName": {
+          "description": "Name of the source database.",
+          "type": "string"
+        },
+        "sourceSqlConnection": {
+          "$ref": "#/definitions/SqlConnectionInformation",
+          "description": "Source SQL Server connection details."
+        },
+        "targetDatabaseName": {
+          "description": "Name of the target database.",
+          "type": "string"
+        },
+        "targetSqlConnection": {
+          "$ref": "#/definitions/SqlConnectionInformation",
+          "description": "Target SQL Server connection details."
+        },
+        "backupConfiguration": {
+          "$ref": "#/definitions/BackupConfiguration",
+          "description": "Backup configuration info."
+        },
+        "succeeded": {
+          "description": "Validation result.",
+          "type": "boolean"
+        },
+        "errors": {
+          "description": "Validation errors.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TestConnectivityData"
+          }
+        }
+      }
     }
   },
   "parameters": {
