@@ -2030,6 +2030,17 @@
         }
       }
     },
+    "SqlDbOfflineConfiguration": {
+      "description": "Offline configuration",
+      "type": "object",
+      "properties": {
+        "offline": {
+          "description": "Offline migration",
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
     "BackupConfiguration": {
       "description": "Backup Configuration",
       "type": "object",
