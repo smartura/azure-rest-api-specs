@@ -1956,6 +1956,33 @@
         }
       }
     },
+    "SqlDbMigrationStatusDetails": {
+      "description": "Detailed status of current Sql Db migration.",
+      "type": "object",
+      "properties": {
+        "migrationState": {
+          "description": "Current State of Migration.",
+          "type": "string",
+          "readOnly": true
+        },
+        "sqlDataCopyErrors": {
+          "description": "Sql Data Copy errors, if any.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true
+        },
+        "listOfCopyProgressDetails": {
+          "description": "Details on progress of ADF copy activities.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CopyProgressDetails"
+          },
+          "readOnly": true
+        }
+      }
+    },
     "SqlConnectionInformation": {
       "description": "Source SQL Connection",
       "type": "object",
@@ -1984,6 +2011,22 @@
         "trustServerCertificate": {
           "description": "Whether to trust server certificate or not.",
           "type": "boolean"
+        }
+      }
+    },
+    "SqlDataCopyThresholds": {
+      "description": "Minimum Row count and size of a table with a clustered index required to perform parallel data copy",
+      "type": "object",
+      "properties": {
+        "cidxRowThreshold": {
+          "format": "int32",
+          "description": "Minimum row count of a table with clustered index to perform parallel data copy",
+          "type": "integer"
+        },
+        "cidxKbsThreshold": {
+          "format": "int32",
+          "description": "Minimum required size in kbs of  atable with a clustered index to perform parallel data copy",
+          "type": "integer"
         }
       }
     },
@@ -2027,6 +2070,109 @@
         "message": {
           "description": "Error message.",
           "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "KeyVaultProperties": {
+      "description": "Key Vault properties for user credentials.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Key Vault Name.",
+          "type": "string"
+        },
+        "sourceUsernameSecretName": {
+          "description": "Key Vault Secret Name corresponding to source username.",
+          "type": "string"
+        },
+        "sourcePasswordSecretName": {
+          "description": "Key Vault Secret Name corresponding to source password.",
+          "type": "string"
+        },
+        "fileShareUsernameSecretName": {
+          "description": "Key Vault Secret Name corresponding to file share username.",
+          "type": "string"
+        },
+        "fileSharePasswordSecretName": {
+          "description": "Key Vault Secret Name corresponding to file share password.",
+          "type": "string"
+        }
+      }
+    },
+    "CopyProgressDetails": {
+      "description": "Details on progress of ADF copy activity",
+      "type": "object",
+      "properties": {
+        "tableName": {
+          "description": "Table Name",
+          "type": "string",
+          "readOnly": true
+        },
+        "status": {
+          "description": "Staus of the Copy activity (InProgress, Succeeded, Failed, Canceled).",
+          "type": "string",
+          "readOnly": true
+        },
+        "parallelCopyType": {
+          "description": "Type of parallel copy (Dynamic range, Physical partition, none).",
+          "type": "string",
+          "readOnly": true
+        },
+        "usedParallelCopies": {
+          "format": "int32",
+          "description": "The degree of parallelization.",
+          "type": "integer",
+          "readOnly": true
+        },
+        "dataRead": {
+          "format": "int64",
+          "description": "Bytes read",
+          "type": "integer",
+          "readOnly": true
+        },
+        "dataWritten": {
+          "format": "int64",
+          "description": "Bytes written",
+          "type": "integer",
+          "readOnly": true
+        },
+        "rowsRead": {
+          "format": "int64",
+          "description": "Rows read",
+          "type": "integer",
+          "readOnly": true
+        },
+        "rowsCopied": {
+          "format": "int64",
+          "description": "Rows Copied",
+          "type": "integer",
+          "readOnly": true
+        },
+        "copyStart": {
+          "format": "date-time",
+          "description": "Copy Start",
+          "type": "string",
+          "readOnly": true
+        },
+        "copyThroughput": {
+          "format": "double",
+          "description": "Copy throughput in KBps",
+          "type": "number",
+          "readOnly": true
+        },
+        "copyDuration": {
+          "format": "int32",
+          "description": "Copy Duration in seconds",
+          "type": "integer",
+          "readOnly": true
+        },
+        "errors": {
+          "description": "Table Level Errors",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
           "readOnly": true
         }
       }
