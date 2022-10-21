@@ -2069,6 +2069,17 @@
         }
       }
     },
+    "SqlDbBackupConfiguration": {
+      "description": "Backup Configuration",
+      "type": "object",
+      "properties": {
+        "sourceLocation": {
+          "$ref": "#/definitions/SqlDbSourceBackupLocation",
+          "description": "Source location of backups.",
+          "readOnly": true
+        }
+      }
+    },
     "ErrorInfo": {
       "description": "Error details",
       "type": "object",
@@ -2184,6 +2195,17 @@
           "items": {
             "type": "string"
           },
+          "readOnly": true
+        }
+      }
+    },
+    "SqlDbSourceBackupLocation": {
+      "description": "Source Location details of backups.",
+      "type": "object",
+      "properties": {
+        "fileStorageType": {
+          "description": "Backup storage Type.",
+          "type": "string",
           "readOnly": true
         }
       }
